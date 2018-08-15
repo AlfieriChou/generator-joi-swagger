@@ -1,14 +1,13 @@
-'use strict';
-const Generator = require('yeoman-generator');
-const chalk = require('chalk');
-const yosay = require('yosay');
+'use strict'
+const Generator = require('yeoman-generator')
+const chalk = require('chalk')
+const yosay = require('yosay')
 
 module.exports = class extends Generator {
-  prompting() {
-    // Have Yeoman greet the user.
+  prompting () {
     this.log(
-      yosay(`Welcome to the first-rate ${chalk.red('generator-joi-swagger')} generator!`)
-    );
+      yosay(`Welcome to the joi_swagger_three ${chalk.red('generator-joi-swagger')} generator!`)
+    )
 
     const prompts = [
       {
@@ -17,22 +16,20 @@ module.exports = class extends Generator {
         message: 'Would you like to enable this option?',
         default: true
       }
-    ];
+    ]
 
     return this.prompt(prompts).then(props => {
-      // To access props later use this.props.someAnswer;
-      this.props = props;
-    });
+      this.props = props
+    })
   }
 
-  writing() {
+  writing () {
     this.fs.copy(
       this.templatePath('./joi_swagger'),
       this.destinationPath('./joi_swagger')
-    );
+    )
   }
-
-  install() {
-    this.installDependencies();
-  }
-};
+  // install () {
+  //   this.installDependencies()
+  // }
+}
