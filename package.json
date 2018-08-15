@@ -45,7 +45,7 @@
     "prepublishOnly": "nsp check",
     "pretest": "eslint .",
     "precommit": "lint-staged",
-    "test": "jest"
+    "test": "cd ./generators/app/templates/joi_swagger/ && npm install && npm test"
   },
   "lint-staged": {
     "*.js": [
