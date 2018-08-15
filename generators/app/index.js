@@ -12,9 +12,13 @@ module.exports = class extends Generator {
     const prompts = [
       {
         type: 'confirm',
-        name: 'someAnswer',
-        message: 'Would you like to enable this option?',
-        default: true
+        name: 'createDirectory',
+        message: 'Would you like to create a new directory for your project?'
+      },
+      {
+        type: 'input',
+        name: 'dirname',
+        message: 'Enter directory name(default_project_name: joi_swagger)'
       }
     ]
 
@@ -24,9 +28,13 @@ module.exports = class extends Generator {
   }
 
   writing () {
+    let createDirName = './joi_swagger'
+    if (this.props.createDirectory) {
+      createDirName = this.props.dirname
+    }
     this.fs.copy(
       this.templatePath('./joi_swagger'),
-      this.destinationPath('./joi_swagger')
+      this.destinationPath(createDirName)
     )
   }
   // install () {
