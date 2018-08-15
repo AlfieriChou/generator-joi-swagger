@@ -15,7 +15,7 @@ const generateSwagger = (modelPath = './model') => {
     let schemaName = item.slice(0, 1).toUpperCase() + item.slice(1)
     for (let index in model) {
       if (index === 'schema') {
-        let modelSchema = convert(model[index])
+        const modelSchema = convert(model[index])
         let schema = {}
         schema[schemaName] = {
           'type': 'object',
@@ -23,7 +23,7 @@ const generateSwagger = (modelPath = './model') => {
         }
         components.schemas = _.merge(components.schemas, schema)
       } else {
-        let content = {
+        const content = {
           tags: model[index].tags,
           summary: model[index].summary,
           description: model[index].description
