@@ -35,7 +35,7 @@
   "scripts": {
     "prepublishOnly": "nsp check",
     "lint": "standard",
-    "test": "cd ./generators/app/templates/joi_swagger/ && npm install && npm test"
+    "test": "mocha --exit"
   },
   "repository": "AlfieriChou/generator-joi-swagger",
   "license": "MIT"
