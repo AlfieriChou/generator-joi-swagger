@@ -6,7 +6,7 @@ const yosay = require('yosay')
 module.exports = class extends Generator {
   prompting () {
     this.log(
-      yosay(`Welcome to the joi_swagger_three ${chalk.red('generator-joi-swagger')} generator!`)
+      yosay(`Welcome to the joi_swagger ${chalk.red('generator-joi-swagger')} generator!`)
     )
 
     const prompts = [
@@ -64,6 +64,10 @@ module.exports = class extends Generator {
     this.fs.copy(
       this.templatePath('./joi_swagger'),
       this.destinationPath(createDirName)
+    )
+    this.fs.copy(
+      this.templatePath('gitignore'),
+      this.destinationPath(`${createDirName}/.gitignore`)
     )
     this.fs.copyTpl(
       this.templatePath('package.json'),
