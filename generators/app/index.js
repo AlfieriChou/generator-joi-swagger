@@ -1,12 +1,12 @@
 'use strict'
 const Generator = require('yeoman-generator')
 const chalk = require('chalk')
-const yosay = require('yosay')
+const yosay = require('../../yosay')
 
 module.exports = class extends Generator {
   prompting () {
     this.log(
-      yosay(`Welcome to the joi_swagger ${chalk.red('generator-joi-swagger')} generator!`)
+      yosay(`${chalk.red('generator-joi-swagger')}!!!`)
     )
 
     const prompts = [
@@ -36,6 +36,12 @@ module.exports = class extends Generator {
         type: 'input',
         name: 'authorEmail',
         message: 'Author Email: '
+      },
+      {
+        name: 'useTravis',
+        type: 'confirm',
+        message: 'would you like to have Travis included in the project?',
+        default: false
       },
       {
         name: 'useDocker',
@@ -80,6 +86,12 @@ module.exports = class extends Generator {
         authorEmail: this.props.authorEmail
       }
     )
+    if (this.props.useTravis) {
+      this.fs.copy(
+        this.templatePath('travis.yml'),
+        this.destinationPath(`${createDirName}/.travis.yml`)
+      )
+    }
     if (this.props.useDocker) {
       this.fs.copy(
         this.templatePath('Dockerfile'),

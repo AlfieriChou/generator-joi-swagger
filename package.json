@@ -1,6 +1,6 @@
 {
   "name": "generator-joi-swagger",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "description": "generator joi swagger",
   "homepage": "https://github.com/AlfieriChou/generator-joi-swagger",
   "author": {
@@ -18,10 +18,9 @@
   ],
   "devDependencies": {
     "husky": "^0.14.3",
+    "mocha": "^5.2.0",
     "nsp": "^3.2.1",
-    "prettier": "^1.11.1",
-    "yeoman-assert": "^3.1.0",
-    "yeoman-test": "^1.7.0"
+    "prettier": "^1.11.1"
   },
   "engines": {
     "npm": ">= 4.0.0"
@@ -29,7 +28,9 @@
   "dependencies": {
     "chalk": "^2.1.0",
     "standard": "^11.0.1",
+    "yeoman-assert": "^3.1.1",
     "yeoman-generator": "^2.0.1",
+    "yeoman-test": "^1.9.1",
     "yosay": "^2.0.1"
   },
   "scripts": {

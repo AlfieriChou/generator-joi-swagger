@@ -16,12 +16,3 @@ describe('GET /swagger.json!!!', function () {
       })
   })
 })
-
-describe('swagger.json test!!!', function () {
-  it('swagger.json openapi mast be 3.0.0!!', function () {
-    (swagger.openapi).should.match('3.0.0')
-  })
-  it('swagger.json paths mast be object!!', function () {
-    (swagger.paths).should.be.an.Object
-  })
-})
