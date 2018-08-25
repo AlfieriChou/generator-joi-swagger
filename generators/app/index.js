@@ -54,6 +54,18 @@ module.exports = class extends Generator {
         type: 'confirm',
         message: 'would you like to have Appveyor included in the project?',
         default: false
+      },
+      {
+        name: 'addReadMe',
+        type: 'confirm',
+        message: 'would you like to have README.md included in the project?',
+        default: true
+      },
+      {
+        name: 'addTest',
+        type: 'confirm',
+        message: 'would you like to have test module included in the project?',
+        default: true
       }
     ]
 
@@ -102,6 +114,18 @@ module.exports = class extends Generator {
       this.fs.copy(
         this.templatePath('appveyor.yml'),
         this.destinationPath(`${createDirName}/appveyor.yml`)
+      )
+    }
+    if (this.props.addReadMe) {
+      this.fs.copy(
+        this.templatePath('README.md'),
+        this.destinationPath(`${createDirName}/README.md`)
+      )
+    }
+    if (this.props.addTest) {
+      this.fs.copy(
+        this.templatePath('test/*'),
+        this.destinationPath(`${createDirName}/test/`)
       )
     }
   }

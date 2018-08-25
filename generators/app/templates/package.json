@@ -4,8 +4,9 @@
     "description": "<%= serverDescription %>",
     "main": "server.js",
     "scripts": {
-      "start": "nodemon server.js",
-      "lint": "standard",
+      "start": "NODE_ENV=production nodemon server.js",
+      "dev": "NODE_ENV=development nodemon server.js",
+      "lint": "standard --fix",
       "test": "mocha --exit"
     },
     "keywords": [

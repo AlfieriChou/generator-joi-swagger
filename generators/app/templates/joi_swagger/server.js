@@ -1,17 +1,23 @@
 const express = require('express')
 const BodyParser = require('body-parser')
-const celebrate = require('celebrate')
 const router = require('./routes/index')
 const morgan = require('morgan')
+const engines = require('consolidate')
+const config = require('./config/index')
 
 const app = express()
-const port = process.env.PORT || 4000
 
 app.use(BodyParser.urlencoded({extended: true}))
 app.use(BodyParser.json())
+
 app.use(morgan('dev'))
+app.use(morgan(':remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] ":referrer" ":user-agent" ":response-time" ms', {
+  stream: config.accessLogStream
+}))
 
 app.use(express.static(__dirname + '/public'))
+app.engine('html', engines.mustache)
+app.set('view engine', 'html')
 
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*')
@@ -21,9 +27,8 @@ app.use((req, res, next) => {
 })
 
 app.use('/', router)
-app.use(celebrate.errors())
 
-app.listen(port)
-console.log(`listening on port ${port}`)
+app.listen(config.port)
+console.log(`listening on port ${config.port}`)
 
 module.exports = app

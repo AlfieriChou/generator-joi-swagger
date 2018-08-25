@@ -1,6 +1,8 @@
 const app = require('../server')
 const should = require('should')
 const request = require('supertest')
+const describe = require('mocha').describe
+const it = require('mocha').it
 
 describe('GET /users', function () {
   it('result should be string!!', function () {
@@ -10,7 +12,7 @@ describe('GET /users', function () {
       .expect('Content-Type', /json/)
       .expect(200)
       .then(response => {
-        response.body.should.be.a.String
+        should(response.body).be.a.String
       })
   })
 })
@@ -24,7 +26,7 @@ describe('POST /users', function () {
       .expect('Content-Type', /json/)
       .expect(200)
       .then(response => {
-        response.body.should.be.a.String
+        should(response.body).be.a.String
       })
   })
 
@@ -35,7 +37,7 @@ describe('POST /users', function () {
       .set('Accept', 'application/json')
       .expect(422)
       .then(response => {
-        response.error.text.should.match('"password" is required')
+        should(response.error.text).match('"password" is required')
       })
   })
 
@@ -46,7 +48,7 @@ describe('POST /users', function () {
       .set('Accept', 'application/json')
       .expect(422)
       .then(response => {
-        response.error.text.should.match('"phone" is required')
+        should(response.error.text).match('"phone" is required')
       })
   })
 })

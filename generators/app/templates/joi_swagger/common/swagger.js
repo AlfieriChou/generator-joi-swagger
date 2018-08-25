@@ -61,21 +61,21 @@ const generateSwagger = (modelPath = './model') => {
           }
         }
 
-        if (model[index].headers) {
-          content.parameters = []
-          let params = convert(Joi.object(model[index].headers))
-          for (let prop in params.properties) {
-            let field = {}
-            field.name = prop
-            field.in = 'header'
-            field.description = model[index].summary
-            field.items = {
-              'type': params.properties[prop].type
-            }
-            field.required = true
-            content.parameters.push(field)
-          }
-        }
+        // if (model[index].headers) {
+        //   content.parameters = []
+        //   let params = convert(Joi.object(model[index].headers))
+        //   for (let prop in params.properties) {
+        //     let field = {}
+        //     field.name = prop
+        //     field.in = 'header'
+        //     field.description = model[index].summary
+        //     field.items = {
+        //       'type': params.properties[prop].type
+        //     }
+        //     field.required = true
+        //     content.parameters.push(field)
+        //   }
+        // }
 
         if (model[index].requestBody) {
           let params = convert(Joi.object(model[index].requestBody.body))
@@ -95,14 +95,13 @@ const generateSwagger = (modelPath = './model') => {
           content.requestBody = request.requestBody
         }
 
+        const schema = model[index].output ? convert(model[index].output) : {$ref: `#/components/schemas/${schemaName}`}
         content.responses = {
           200: {
             'description': 'response success',
             'content': {
               'application/json': {
-                'schema': {
-                  $ref: `#/components/schemas/${schemaName}`
-                }
+                'schema': schema
               }
             }
           }
@@ -126,8 +125,18 @@ const generateSwagger = (modelPath = './model') => {
   let swagger = {}
   swagger.openapi = '3.0.0'
   swagger.info = {
-    'title': 'API document',
-    'version': 'v3'
+    'title': 'Demo API document',
+    'version': 'v3',
+    'description': 'Using swagger3.0 & joi to generate swagger.json',
+    'contact': {
+      'name': 'AlfieriChou',
+      'email': 'alfierichou@gmail.com',
+      'url': 'https://alfierichou.com'
+    },
+    'license': {
+      'name': 'MIT',
+      'url': 'https://github.com/AlfieriChou/joi_swagger_three/blob/master/LICENSE'
+    }
   }
   swagger.paths = mergeMethod
   swagger.components = components
