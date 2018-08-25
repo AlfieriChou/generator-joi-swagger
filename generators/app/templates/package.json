@@ -1,35 +1,41 @@
 {
-    "name": "<%= serverName %>",
-    "version": "<%= serverVersion %>",
-    "description": "<%= serverDescription %>",
-    "main": "server.js",
-    "scripts": {
-      "start": "NODE_ENV=production nodemon server.js",
-      "dev": "NODE_ENV=development nodemon server.js",
-      "lint": "standard --fix",
-      "test": "mocha --exit"
-    },
-    "keywords": [
-      "joi",
-      "swagger"
-    ],
-    "author": "<%= author %> <<%= authorEmail %>>",
-    "license": "MIT",
-    "dependencies": {
-      "body-parser": "^1.18.3",
-      "enjoi": "^3.2.4",
-      "express": "^4.16.3",
-      "joi": "^13.5.2",
-      "joi-to-json-schema": "^3.3.0",
-      "lodash": "^4.17.10",
-      "morgan": "^1.9.0",
-      "nodemon": "^1.18.3"
-    },
-    "devDependencies": {
-      "standard": "^11.0.1",
-      "mocha": "^5.2.0",
-      "should": "^13.2.3",
-      "supertest": "^3.1.0"
-    }
+  "name": "<%= serverName %>",
+  "version": "<%= serverVersion %>",
+  "description": "<%= serverDescription %>",
+  "main": "server.js",
+  "scripts": {
+    "start": "NODE_ENV=production nodemon server.js",
+    "dev": "NODE_ENV=development nodemon server.js",
+    "lint": "standard --fix",
+    "test": "nyc mocha --exit",
+    "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov"
+  },
+  "keywords": [
+    "joi",
+    "swagger"
+  ],
+  "author": "<%= author %> <<%= authorEmail %>>",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "consolidate": "^0.15.1",
+    "enjoi": "^3.2.4",
+    "express": "^4.16.3",
+    "joi": "^13.5.2",
+    "joi-to-json-schema": "^3.3.0",
+    "lodash": "^4.17.10",
+    "morgan": "^1.9.0",
+    "mustache": "^2.3.2",
+    "rotating-file-stream": "^1.3.7"
+  },
+  "devDependencies": {
+    "codecov": "^3.0.4",
+    "mocha": "^5.2.0",
+    "nodemon": "^1.18.3",
+    "nyc": "^12.0.2",
+    "should": "^13.2.3",
+    "standard": "^11.0.1",
+    "supertest": "^3.1.0"
   }
+}
   
