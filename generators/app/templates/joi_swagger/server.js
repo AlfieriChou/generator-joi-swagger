@@ -1,6 +1,6 @@
 const express = require('express')
 const BodyParser = require('body-parser')
-const router = require('./routes/index')
+const router = require('./app/routes/index')
 const morgan = require('morgan')
 const engines = require('consolidate')
 const config = require('./config/index')
@@ -26,7 +26,7 @@ app.use((req, res, next) => {
   next()
 })
 
-app.use('/', router)
+app.use('/v1/', router)
 
 app.listen(config.port)
 console.log(`listening on port ${config.port}`)
