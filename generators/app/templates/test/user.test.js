@@ -21,7 +21,7 @@ describe('POST /users', function () {
   it('success and response.body mast be String!!', function () {
     request(app)
       .post('/v1/users')
-      .send({phone: '13322221111', password: 'hahahahhaha'})
+      .send({ phone: '13322221111', password: 'hahahahhaha' })
       .set('Accept', 'application/json')
       .expect('Content-Type', /json/)
       .expect(200)
@@ -33,7 +33,7 @@ describe('POST /users', function () {
   it('"password" is required', function () {
     request(app)
       .post('/v1/users')
-      .send({phone: '13322221111'})
+      .send({ phone: '13322221111' })
       .set('Accept', 'application/json')
       .expect(422)
       .then(response => {
@@ -44,7 +44,7 @@ describe('POST /users', function () {
   it('"phone" is required', function () {
     request(app)
       .post('/v1/users')
-      .send({password: 'hahahahhaha'})
+      .send({ password: 'hahahahhaha' })
       .set('Accept', 'application/json')
       .expect(422)
       .then(response => {

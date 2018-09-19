@@ -6,7 +6,7 @@ class SwaggerController {
     res.json(result)
   }
   async index (req, res) {
-    await res.render('index.html', {url: 'swagger.json'})
+    await res.render('index.html', { url: 'swagger.json' })
   }
 }
 

@@ -1,3 +1,8 @@
+### Sep 19, 2018
+
+  * release v1.1.7
+    * standard v12.0.0
+
 ### Sep 7, 2018
 
   * release v1.1.6

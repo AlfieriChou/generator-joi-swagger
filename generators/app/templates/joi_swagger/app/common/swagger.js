@@ -98,7 +98,7 @@ const generateSwagger = (modelPath = './app/model') => {
           content.requestBody = request.requestBody
         }
 
-        const schema = model[index].output ? convert(model[index].output) : {$ref: `#/components/schemas/${schemaName}`}
+        const schema = model[index].output ? convert(model[index].output) : { $ref: `#/components/schemas/${schemaName}` }
         content.responses = {
           200: {
             'description': 'response success',

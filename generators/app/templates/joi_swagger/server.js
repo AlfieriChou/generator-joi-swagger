@@ -7,7 +7,7 @@ const config = require('./config/index')
 
 const app = express()
 
-app.use(BodyParser.urlencoded({extended: true}))
+app.use(BodyParser.urlencoded({ extended: true }))
 app.use(BodyParser.json())
 
 app.use(morgan('dev'))

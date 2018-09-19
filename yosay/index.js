@@ -97,7 +97,7 @@ module.exports = (message, options) => {
     return spacesIndex[spacesIndex.length - 1] + 1
   }, 0)
 
-  return wrap(strippedMessage, maxLength, {hard: true})
+  return wrap(strippedMessage, maxLength, { hard: true })
     .split(/\n/)
     .reduce((greeting, str, index, array) => {
       if (!regExNewLine.test(str)) {
