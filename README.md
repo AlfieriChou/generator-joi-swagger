@@ -1,4 +1,7 @@
 # generator-joi-swagger [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/AlfieriChou/generator-joi-swagger.svg)](https://greenkeeper.io/)
+
 > generator joi swagger
 
 ## Installation
